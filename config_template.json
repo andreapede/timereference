@@ -1,0 +1,44 @@
+{
+  "_comment": "Excel Timestamp Synchronizer Configuration Template",
+  "_description": "Configure your Excel files synchronization settings below",
+  
+  "reference_file": "path/to/your/reference_file.xlsx",
+  "_reference_file_comment": "Path to the Excel file containing the main timestamp reference",
+  
+  "reference_timestamp_column": "timestamp",
+  "_reference_timestamp_column_comment": "Name of the timestamp column in the reference file",
+  
+  "output_file": "synchronized_data.xlsx",
+  "_output_file_comment": "Path where the synchronized Excel file will be saved",
+  
+  "tolerance_seconds": 0,
+  "_tolerance_seconds_comment": "Tolerance in seconds for timestamp matching (0 = exact match, >0 = allow difference)",
+  
+  "duplicate_strategy": "mean",
+  "_duplicate_strategy_comment": "How to handle duplicate timestamps: 'mean', 'first', 'last', 'max', 'min'",
+  
+  "data_files": [
+    {
+      "file_path": "path/to/data_file_1.xlsx",
+      "timestamp_column": "time",
+      "data_columns": ["column1", "column2", "column3"],
+      "sheet_name": 0,
+      "_sheet_name_comment": "Use 0 for first sheet, 1 for second, or 'SheetName' for named sheet"
+    },
+    {
+      "file_path": "path/to/data_file_2.xlsx",
+      "timestamp_column": "datetime",
+      "data_columns": ["temperature", "humidity"],
+      "sheet_name": "Sheet1"
+    }
+  ],
+  "_data_files_comment": "List of Excel files to synchronize with the reference timestamps",
+  
+  "_usage_instructions": [
+    "1. Replace file paths with your actual Excel file locations",
+    "2. Update column names to match your Excel files",
+    "3. Set appropriate tolerance_seconds for your data sampling rates",
+    "4. Choose duplicate_strategy based on how you want to handle duplicate timestamps",
+    "5. Run: python sync_excel.py config.json"
+  ]
+}

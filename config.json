@@ -1,0 +1,27 @@
+{
+  "reference_file": "reference_data.xlsx",
+  "reference_timestamp_column": "timestamp",
+  "output_file": "synchronized_output.xlsx",
+  "tolerance_seconds": 5,
+  "duplicate_strategy": "mean",
+  "data_files": [
+    {
+      "file_path": "sensor_data_1.xlsx",
+      "timestamp_column": "time",
+      "data_columns": ["temperature", "humidity"],
+      "sheet_name": 0
+    },
+    {
+      "file_path": "sensor_data_2.xlsx",
+      "timestamp_column": "datetime",
+      "data_columns": ["pressure", "wind_speed", "rainfall"],
+      "sheet_name": "Data"
+    },
+    {
+      "file_path": "sensor_data_3.xlsx",
+      "timestamp_column": "timestamp",
+      "data_columns": ["voltage", "current"],
+      "sheet_name": 0
+    }
+  ]
+}
