@@ -1,27 +1,30 @@
 {
-  "reference_file": "reference_data.xlsx",
-  "reference_timestamp_column": "timestamp",
-  "output_file": "synchronized_output.xlsx",
-  "tolerance_seconds": 5,
-  "duplicate_strategy": "mean",
+  "reference_file": "C:\\VSCode\\timereference\\ID S008 20250520 CPET BxB_20250718115150.xlsx",
+  "reference_timestamp_column": {"letter": "I","skip_rows": 3},
+  "output_file": "synchronized_output_S008.xlsx",
+  "tolerance_seconds": 0,
+  "duplicate_strategy": "first",
+  "reference_headers": { "I": "Time" },
   "data_files": [
     {
-      "file_path": "sensor_data_1.xlsx",
-      "timestamp_column": "time",
-      "data_columns": ["temperature", "humidity"],
-      "sheet_name": 0
-    },
-    {
-      "file_path": "sensor_data_2.xlsx",
-      "timestamp_column": "datetime",
-      "data_columns": ["pressure", "wind_speed", "rainfall"],
+      "file_path": "C:\\VSCode\\timereference\\ID S008 20250520 CPET BxB_20250718115150.xlsx",
+      "timestamp_column": {"letter": "I","skip_rows": 3},
+      "data_columns": [{"name": "VE","skip_rows": 3, "label": "VE"}],
       "sheet_name": "Data"
+       },
+    {
+      "file_path": "C:\\VSCode\\timereference\\IDS008.xlsx",
+      "timestamp_column": {"letter": "E","skip_rows": 18},
+      "data_columns": [{"name": "B", "skip_rows": 18,"label":"HR_Q"}, {"name": "C", "skip_rows": 18,"label":"SpO2_Q"}],
+      "headers": { "B": "HR_Q", "C": "SpO2_Q" },
+      "sheet_name": "delay 10s"
     },
     {
-      "file_path": "sensor_data_3.xlsx",
-      "timestamp_column": "timestamp",
-      "data_columns": ["voltage", "current"],
-      "sheet_name": 0
+      "file_path": "C:\\VSCode\\timereference\\IDS008.xlsx",
+      "timestamp_column": {"letter": "K","skip_rows": 18},
+      "data_columns": [{"name": "L", "skip_rows": 18,"label":"HR_Nonin"}, {"name": "M", "skip_rows": 18,"label":"SpO2_Nonin"}],
+      "headers": { "L": "HR_Nonin", "M": "SpO2_Nonin" },
+      "sheet_name": "delay 10s"
     }
   ]
 }

@@ -6,7 +6,13 @@
   "_reference_file_comment": "Path to the Excel file containing the main timestamp reference",
   
   "reference_timestamp_column": "timestamp",
-  "_reference_timestamp_column_comment": "Name of the timestamp column in the reference file",
+  "_reference_timestamp_column_comment": "Name of the timestamp column in the reference file, or Excel column letter (e.g., 'A') if no header",
+
+  "reference_headers": {
+    "_comment": "Optional: map existing headers, letters, or indices to new names for the reference file",
+    "A": "timestamp"
+  },
+  "_reference_headers_comment": "Keys can be existing names, Excel letters (A, B, AA), or indices (0-based). Values are the desired column names.",
   
   "output_file": "synchronized_data.xlsx",
   "_output_file_comment": "Path where the synchronized Excel file will be saved",
@@ -23,7 +29,14 @@
       "timestamp_column": "time",
       "data_columns": ["column1", "column2", "column3"],
       "sheet_name": 0,
-      "_sheet_name_comment": "Use 0 for first sheet, 1 for second, or 'SheetName' for named sheet"
+      "headers": {
+        "_comment": "Optional: per-file headers mapping (same rules as reference_headers)",
+        "A": "time",
+        "B": "column1",
+        "C": "column2",
+        "D": "column3"
+      },
+  "_sheet_name_comment": "Use 0 for first sheet, 1 for second, or 'SheetName' for named sheet"
     },
     {
       "file_path": "path/to/data_file_2.xlsx",
@@ -32,7 +45,7 @@
       "sheet_name": "Sheet1"
     }
   ],
-  "_data_files_comment": "List of Excel files to synchronize with the reference timestamps",
+  "_data_files_comment": "List of Excel files to synchronize with the reference timestamps. Columns can be names or Excel letters (A, B, AA, ...)",
   
   "_usage_instructions": [
     "1. Replace file paths with your actual Excel file locations",

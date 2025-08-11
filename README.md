@@ -11,6 +11,8 @@ A Python program for synchronizing data from multiple Excel files based on times
 - **JSON configuration**: Easy-to-edit configuration file
 - **Missing data handling**: Gracefully handles missing timestamps and provides summary statistics
 - **Single program**: One command to run everything
+- **Column letters support**: Use Excel column letters (A, B, C, ...) when headers are missing
+ - **Optional header mapping**: Provide desired header names in config to assign/rename columns when original files lack proper headers
 
 ## Requirements
 
@@ -37,8 +39,8 @@ pip install pandas numpy openpyxl
   "data_files": [
     {
       "file_path": "sensor_data.xlsx",
-      "timestamp_column": "time",
-      "data_columns": ["temperature", "humidity"],
+  "timestamp_column": "time",
+  "data_columns": ["temperature", "humidity"],
       "sheet_name": 0
     }
   ]
@@ -95,9 +97,37 @@ python sync_excel.py
 ### File Configuration
 Each file in `data_files` supports:
 - `file_path`: Path to the Excel file
-- `timestamp_column`: Name of the timestamp column
-- `data_columns`: List of column names to extract
+- `timestamp_column`: Name of the timestamp column OR Excel letter (e.g., "A", "B", "AA")
+- `data_columns`: List of column names OR Excel letters to extract (e.g., ["C", "D"]) 
 - `sheet_name`: Sheet index (0, 1, 2...) or sheet name ("Sheet1", "Data", etc.)
+
+You can also specify `reference_timestamp_column` as an Excel letter if your reference file has no headers.
+
+### Optional headers mapping
+If your Excel files don't have meaningful headers, you can map them in the configuration.
+
+- At the root level, use `reference_headers` to rename columns in the reference file.
+- Per data file, use a `headers` object for that file.
+
+Keys can be:
+- Existing header names
+- Excel letters (e.g., "A", "B", "AA")
+- 0-based indices (as numbers or strings)
+
+Example:
+```json
+{
+  "reference_headers": { "A": "timestamp" },
+  "data_files": [
+    {
+      "file_path": "sensor.xlsx",
+      "timestamp_column": "A",
+      "data_columns": ["B", "C"],
+      "headers": { "A": "time", "B": "temperature", "C": "humidity" }
+    }
+  ]
+}
+```
 
 ## Example Output
 
